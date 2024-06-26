@@ -5,7 +5,7 @@ const postData = require('./postRequest')
 
 
 function getRequest(baseUrl, headers, userInfo) {
-    let url = baseUrl+"/gportal/web/login"
+    let url = baseUrl + "/gportal/web/login"
     axios.get(url, {
         headers: headers
     })
@@ -18,8 +18,8 @@ function getRequest(baseUrl, headers, userInfo) {
             let strArr = getStr.split("&");
 
             //strArr[3] = strArr[3] + userInfo.userMac;
-            strArr[10] = strArr[10] + userInfo.username;
-            strArr[11] = strArr[11] + userInfo.password;
+            strArr[13] = strArr[13] + userInfo.username;
+            strArr[14] = strArr[14] + userInfo.password;
 
             let oriData = strArr.join("&");
             let msg = cryptoEncode(oriData, iv);
@@ -29,11 +29,11 @@ function getRequest(baseUrl, headers, userInfo) {
                 "sign": sign
             }
             setTimeout(function () {
-                postData(baseUrl,headers,dataObj)
-            },3000)
+                postData(baseUrl, headers, dataObj)
+            }, 3000)
         }).catch(Error => {
-        console.log("获取网页内容时错误:", Error)
-    })
+            console.log("获取网页内容时错误:", Error)
+        })
 }
 
 module.exports = getRequest
