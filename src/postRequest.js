@@ -7,7 +7,7 @@ function postData(baseUrl, headers, Obj) {
             data: Obj.msg,
             iv: Obj.ivv
         },
-        {headers: headers})
+        { headers: headers })
         .then(Response => {
             console.log(Response.data);
             setTimeout(function () {
